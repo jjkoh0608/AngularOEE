@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+<mat-drawer-container class="main-container" autosize>
+  <mat-drawer #drawer class="sidenav-containe" mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" style="background-color: #eee">
+        <mat-icon>dashboard</mat-icon>&nbsp;Dashboard</a
+      >
+      <a mat-list-item routerLink="/setup">
+        <mat-icon>settings</mat-icon>&nbsp;Machine Setup</a
+      >
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="container">
+    <section class="section d-flex justify-content-between">
+      <div class="pageTitle">
+        <h1>Dashboard</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <!-- <li class="breadcrumb-item active">Dashboard</li> -->
+            <li class="breadcrumb-item">Dashboard</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <div class="card">
+      <div class="card-header text-center bg-dark text-white fs-5">
+        Overall OEE
+      </div>
+  
+      <div class="card-body py-4">
+        <!-- Line Chart -->
+        <div class="row">
+          <div class="col-md-12">
+            <canvas id="pieChart" width="100%" height="20%"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div>
+      <h4 class="fw-bold pt-4">PLT001 - Plant A</h4>
+  
+      <div class="col-sm-12 col-md-4 col-xxl-4">
+        <div class="card">
+          <a href="/Dashboard/Section/1" class="text-reset">
+            <div class="card-header text-center bg-dark text-white fs-5">
+              SEC001
+            </div>
+            <div class="card-body d-flex align-items-center p-2">
+              <div style=" height: 200px; user-select: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                <ngx-gauge
+                  [type]="gaugeType"
+                  [value]="gaugeValue"
+                  [label]="gaugeLabel"
+                  [append]="gaugeAppendText"
+                >
+                </ngx-gauge>
+              </div>
+  
+              <div class="w-100 p-4">
+                <small class="fs-6 justify-content-center w-100"
+                  >Availability :
+                </small>
+                <div class="progress mb-4">
+                  <div
+                    class="progress-bar bg-danger"
+                    role="progressbar"
+                    id="availabilityVal"
+                    style="width: 31%"
+                    aria-valuenow="31"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    31%
+                  </div>
+                </div>
+  
+                <small class="fs-6 justify-content-center w-100"
+                  >Performance :
+                </small>
+                <div class="progress mb-4">
+                  <div
+                    class="progress-bar bg-danger"
+                    role="progressbar"
+                    id="performanceVal"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    0%
+                  </div>
+                </div>
+  
+                <small class="fs-6 justify-content-center w-100"
+                  >Quality :
+                </small>
+                <div class="progress mb-4">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="100"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    100%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>
+
+

@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Add Machine Form</h1>
+<div matDialogContent>
+  <form [formGroup]="machineForm">
+    <mat-grid-list cols="4" rowHeight="40px">
+      <!-- <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows">
+        </mat-grid-tile> -->
+
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <mat-form-field appearance="outline">
+          <mat-label>Machine No.</mat-label>
+          <input
+            formControlName="machineNo"
+            matInput
+            placeholder="Machine No."
+          />
+          <mat-error
+          *ngIf="machineForm.get('machineNo')?.errors?.['required'] && (machineForm.get('machineNo')?.dirty || machineForm.get('machineNo')?.touched)"
+          >Please provide Machine No.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <mat-form-field appearance="outline">
+          <mat-label>Machine Name</mat-label>
+          <input
+            formControlName="machineName"
+            matInput
+            placeholder="MachineName"
+          />
+          <mat-error
+            *ngIf="machineForm.get('machineName')?.errors?.['required'] && (machineForm.get('machineName')?.dirty || machineForm.get('machineName')?.touched)"
+            >Please provide Machine Name</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status" placeholder="Status">
+            <mat-option value="Active">Active</mat-option>
+            <mat-option value="Inactive">Inactive</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-error
+        *ngIf="machineForm.get('status')?.errors?.['required'] && (machineForm.get('status')?.dirty || machineForm.get('status')?.touched)"
+        >Please select a status</mat-error>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <mat-form-field appearance="outline">
+          <mat-label>Supplier</mat-label>
+          <input formControlName="supplier" matInput placeholder="Supplier" />
+          <mat-error
+          *ngIf="machineForm.get('supplier')?.errors?.['required'] && (machineForm.get('supplier')?.dirty || machineForm.get('supplier')?.touched)"
+          >Please provide supplier</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button (click)="addMachine()" mat-raised-button color="primary">
+    {{ actionBtn }}
+  </button>
+</div>
